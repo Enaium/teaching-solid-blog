@@ -1,9 +1,6 @@
 package cn.enaium.blog.model.entity;
 
-import org.babyfish.jimmer.sql.Entity;
-import org.babyfish.jimmer.sql.GeneratedValue;
-import org.babyfish.jimmer.sql.Id;
-import org.babyfish.jimmer.sql.Table;
+import org.babyfish.jimmer.sql.*;
 import org.babyfish.jimmer.sql.meta.UUIDIdGenerator;
 import org.jetbrains.annotations.NotNull;
 
@@ -20,6 +17,9 @@ public interface Reply {
     UUID id();
 
     UUID userId();
+
+    @ManyToOne
+    User user();
 
     UUID postId();
 

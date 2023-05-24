@@ -17,9 +17,8 @@
   "dependencies": {
     "@popperjs/core": "^2.11.6",
     "@solidjs/router": "^0.8.2",
+    "@tanstack/solid-query": "^4.29.7",
     "bootstrap": "^5.2.3",
-    "highlight.js": "^11.8.0",
-    "marked": "^5.0.2",
     "solid-immer": "^0.1.1",
     "solid-js": "^1.6.10",
     "solid-toast": "^0.5.0",

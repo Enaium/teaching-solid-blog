@@ -7,6 +7,9 @@ dependencies:
   '@solidjs/router':
     specifier: ^0.8.2
     version: 0.8.2(solid-js@1.6.10)
+  '@tanstack/solid-query':
+    specifier: ^4.29.7
+    version: 4.29.7(solid-js@1.6.10)
   bootstrap:
     specifier: ^5.2.3
     version: 5.2.3(@popperjs/core@2.11.6)
@@ -608,6 +611,19 @@ packages:
     peerDependencies:
       solid-js: ^1.5.3
     dependencies:
+      solid-js: 1.6.10
+    dev: false
+
+  /@tanstack/query-core@4.29.7:
+    resolution: {integrity: sha512-GXG4b5hV2Loir+h2G+RXhJdoZhJLnrBWsuLB2r0qBRyhWuXq9w/dWxzvpP89H0UARlH6Mr9DiVj4SMtpkF/aUA==}
+    dev: false
+
+  /@tanstack/solid-query@4.29.7(solid-js@1.6.10):
+    resolution: {integrity: sha512-mlsClbP8kEo+LKCid6e3XCjCI24oWZlvjpAov6nufHb6dCtftiLUfAP9jv0g/5D7kGMQar0NwqAAKc1F77SugA==}
+    peerDependencies:
+      solid-js: ^1.5.7
+    dependencies:
+      '@tanstack/query-core': 4.29.7
       solid-js: 1.6.10
     dev: false
 

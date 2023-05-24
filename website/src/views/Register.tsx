@@ -1,14 +1,11 @@
 import { createImmerSignal } from "solid-immer"
-import { useSessionStore } from "../store"
 import { UserInput } from "../__generated/model/static"
 import { api } from "../common/ApiInstance"
 import toast from "solid-toast"
 import { Link, Route, useNavigate } from "@solidjs/router"
 
-const Login = () => {
+const Register = () => {
   const navigate = useNavigate()
-
-  const session = useSessionStore()
 
   let formRef
 
@@ -19,13 +16,11 @@ const Login = () => {
     e.stopPropagation()
 
     if (formRef.checkValidity()) {
-      api.sessionController
-        .login({ body: form() })
-        .then((data) => {
-          session.setToken(data.token)
-          session.setId(data.id)
-          toast.success("Login success")
-          navigate("/")
+      api.userController
+        .register({ body: form() })
+        .then(() => {
+          toast.success("Registered successfully")
+          navigate("/login")
         })
         .catch((err) => {
           toast.error(err)
@@ -41,32 +36,36 @@ const Login = () => {
         <form ref={formRef} class="needs-validation" style={{ width: "18rem", height: "14rem" }} novalidate>
           <div class="d-flex flex-column justify-content-between h-100">
             <div>
-              <label class="form-label">Username</label>
+              <label class="form-label">
+                Username
+              </label>
               <input
                 type="text"
                 class="form-control"
                 value={form().username ?? ""}
                 required
-                onInput={(e) => setForm((draft) => (draft.username = e.currentTarget.value))}
+                onInput={(e) => setForm((draft) => (draft.username = e.target.value))}
               />
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Please enter your username.</div>
             </div>
             <div>
-              <label class="form-label">Password</label>
+              <label class="form-label">
+                Password
+              </label>
               <input
                 type="text"
                 class="form-control"
                 required
                 value={form().password ?? ""}
-                onInput={(e) => setForm((draft) => (draft.password = e.currentTarget.value))}
+                onInput={(e) => setForm((draft) => (draft.password = e.target.value))}
               />
               <div class="valid-feedback">Looks good!</div>
               <div class="invalid-feedback">Please enter your password.</div>
             </div>
-            <Link href="/register">Register</Link>
+            <Link href="/login">Login</Link>
             <button class="btn btn-primary" type="submit" onClick={submit}>
-              Login
+              Register
             </button>
           </div>
         </form>
@@ -75,4 +74,4 @@ const Login = () => {
   )
 }
 
-export default Login
+export default Register

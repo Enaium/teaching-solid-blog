@@ -1,12 +1,10 @@
 package cn.enaium.blog.model.entity;
 
-import org.babyfish.jimmer.sql.Entity;
-import org.babyfish.jimmer.sql.GeneratedValue;
-import org.babyfish.jimmer.sql.Id;
-import org.babyfish.jimmer.sql.Table;
+import org.babyfish.jimmer.sql.*;
 import org.babyfish.jimmer.sql.meta.UUIDIdGenerator;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -21,4 +19,7 @@ public interface Category {
 
     @NotNull
     String name();
+
+    @OneToMany(mappedBy = "category")
+    List<Post> posts();
 }
